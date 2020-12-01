@@ -118,7 +118,10 @@ class Embedding(torch.nn.Module):
                 embedding = torch.FloatTensor([float(i) for i in data[1:]])
                 print('Debug Outer: embedding shape: {}'.format(embedding.shape))
                 print('DEBUG Outer: dict_map[data[0]] type: {}'.format(type(dict_map[data[0]])))
-                print('DEBUG Outer: dict_map[data[0]] shape: {}'.format(dict_map[data[0]].shape))
+                print('DEBUG Outer: dict_map[data[0]] : {}'.format(dict_map[data[0]]))
+                print('DEBUG Outer: embedding_lookup_table type: {}'.format(type(embedding_lookup_table)))
+                print('DEBUG Outer: embedding_lookup_table[dict_map[data[0]] type: {}'.format(type(embedding_lookup_table[dict_map[data[0]]])))
+                print('DEBUG Outer: embedding_lookup_table[dict_map[data[0]] shape: {}'.format(embedding_lookup_table[dict_map[data[0]]].shape))
                 try:
                     print('Debug: embedding shape: {}'.format(embedding.shape))
                     embedding = torch.FloatTensor([float(i) for i in data[1:]])
