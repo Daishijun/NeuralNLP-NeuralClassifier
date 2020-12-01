@@ -115,8 +115,12 @@ class Embedding(torch.nn.Module):
                     continue
                 if data[0] not in dict_map:
                     continue
-                embedding = torch.FloatTensor([float(i) for i in data[1:]])
-                embedding_lookup_table[dict_map[data[0]]] = embedding
+                try:
+                    print('Debug: embedding shape: {}'.format(embedding.shape))
+                    embedding = torch.FloatTensor([float(i) for i in data[1:]])
+                    embedding_lookup_table[dict_map[data[0]]] = embedding
+                except:
+                    print(data[0], len(data[1:]))
                 num_pretrained += 1
         self.logger.warn(
             "Total dict size of %s is %d" % (name, len(dict_map)))
