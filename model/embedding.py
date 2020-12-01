@@ -117,6 +117,8 @@ class Embedding(torch.nn.Module):
                     continue
                 embedding = torch.FloatTensor([float(i) for i in data[1:]])
                 print('Debug Outer: embedding shape: {}'.format(embedding.shape))
+                print('DEBUG Outer: dict_map[data[0]] type: {}'.format(type(dict_map[data[0]])))
+                print('DEBUG Outer: dict_map[data[0]] shape: {}'.format(dict_map[data[0]].shape))
                 try:
                     print('Debug: embedding shape: {}'.format(embedding.shape))
                     embedding = torch.FloatTensor([float(i) for i in data[1:]])
