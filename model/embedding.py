@@ -125,7 +125,7 @@ class Embedding(torch.nn.Module):
                 try:
                     embedding = torch.FloatTensor([float(i) for i in data[1:]])
                     embedding_lookup_table[dict_map[data[0]]] = embedding
-                    print('Debug: embedding shape: {}'.format(embedding.shape))
+                    # print('Debug: embedding shape: {}'.format(embedding.shape))
                 except:
                     print(data[0], len(data[1:]))
                 num_pretrained += 1
