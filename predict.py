@@ -104,7 +104,8 @@ if __name__ == "__main__":
     # with codecs.open("predict_origin.txt", "w", predictor.dataset.CHARSET) as of:
     # with codecs.open("predict_addedfr2en.txt", "w", predictor.dataset.CHARSET) as of:
     # with codecs.open("predict_label1122_2k.txt", "w", predictor.dataset.CHARSET) as of:
-    with codecs.open("predict_label1122_2k_origin.txt", "w", predictor.dataset.CHARSET) as of:
+    # with codecs.open("predict_label1122_2k_origin.txt", "w", predictor.dataset.CHARSET) as of:
+    with codecs.open("predict_label1122_2k_level3.txt", "w", predictor.dataset.CHARSET) as of:
         for predict_prob in predict_probs:
             if not is_multi:
                 predict_label_ids = [predict_prob.argmax()]
@@ -115,8 +116,8 @@ if __name__ == "__main__":
                 for j in range(0, 1): # changed as weimin
                     if predict_prob[predict_label_idx[j]] > config.eval.threshold:
                         predict_label_ids.append(predict_label_idx[j])
-            # predict_label_name = [predictor.dataset.id_to_label_map[predict_label_id] \
-            #         for predict_label_id in predict_label_ids]
-            predict_label_name = [predictor.dataset.id_to_label_map[predict_label_id].split('.')[0] + '\t' + str(predict_prob[j])\
-                                  for predict_label_id, j in zip(predict_label_ids,predict_label_idx)]
+            predict_label_name = [predictor.dataset.id_to_label_map[predict_label_id] \
+                    for predict_label_id in predict_label_ids]
+            # predict_label_name = [predictor.dataset.id_to_label_map[predict_label_id].split('.')[0] + '\t' + str(predict_prob[j])\
+            #                       for predict_label_id, j in zip(predict_label_ids,predict_label_idx)]
             of.write(";".join(predict_label_name) + "\n") 
