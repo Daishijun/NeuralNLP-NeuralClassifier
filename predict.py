@@ -93,22 +93,27 @@ if __name__ == "__main__":
     is_multi = config.task_info.label_type == ClassificationType.MULTI_LABEL
     for line in codecs.open(sys.argv[2], "r", predictor.dataset.CHARSET):
         input_texts.append(line.strip("\n"))
+    print(len(input_texts))  #added as weimin
     epoches = math.ceil(len(input_texts)/batch_size)
     for i in range(epoches):
         batch_texts = input_texts[i*batch_size:(i+1)*batch_size]
         predict_prob = predictor.predict(batch_texts)
         for j in predict_prob:
             predict_probs.append(j)
-    with codecs.open("predict.txt", "w", predictor.dataset.CHARSET) as of:
+    # with codecs.open("predict.txt", "w", predictor.dataset.CHARSET) as of:
+    with codecs.open("predict_origin.txt", "w", predictor.dataset.CHARSET) as of:
         for predict_prob in predict_probs:
             if not is_multi:
                 predict_label_ids = [predict_prob.argmax()]
             else:
                 predict_label_ids = []
                 predict_label_idx = np.argsort(-predict_prob)
-                for j in range(0, config.eval.top_k):
+                # for j in range(0, config.eval.top_k):
+                for j in range(0, 1): # changed as weimin
                     if predict_prob[predict_label_idx[j]] > config.eval.threshold:
                         predict_label_ids.append(predict_label_idx[j])
-            predict_label_name = [predictor.dataset.id_to_label_map[predict_label_id] \
-                    for predict_label_id in predict_label_ids]
+            # predict_label_name = [predictor.dataset.id_to_label_map[predict_label_id] \
+            #         for predict_label_id in predict_label_ids]
+            predict_label_name = [predictor.dataset.id_to_label_map[predict_label_id].split('.')[0] + '\t' + str(predict_prob[j])\
+                                  for predict_label_id, j in zip(predict_label_ids,predict_label_idx)]
             of.write(";".join(predict_label_name) + "\n") 
