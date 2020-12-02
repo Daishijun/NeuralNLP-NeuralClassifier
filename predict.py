@@ -103,7 +103,8 @@ if __name__ == "__main__":
     # with codecs.open("predict.txt", "w", predictor.dataset.CHARSET) as of:
     # with codecs.open("predict_origin.txt", "w", predictor.dataset.CHARSET) as of:
     # with codecs.open("predict_addedfr2en.txt", "w", predictor.dataset.CHARSET) as of:
-    with codecs.open("predict_label1122_2k.txt", "w", predictor.dataset.CHARSET) as of:
+    # with codecs.open("predict_label1122_2k.txt", "w", predictor.dataset.CHARSET) as of:
+    with codecs.open("predict_label1122_2k_origin.txt", "w", predictor.dataset.CHARSET) as of:
         for predict_prob in predict_probs:
             if not is_multi:
                 predict_label_ids = [predict_prob.argmax()]
