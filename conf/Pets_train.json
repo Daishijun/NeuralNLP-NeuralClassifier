@@ -18,7 +18,7 @@
       "data/Pets/Pets_en_valid.json"
     ],
     "test_json_files": [
-      "data/category_evaluation_1201_encate_binary_Pets.json"
+      "data/Pets/category_evaluation_1201_encate_binary_Pets.json"
     ],
     "generate_dict_using_json_files": false,
     "generate_dict_using_all_json_files": false,
