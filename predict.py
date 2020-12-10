@@ -111,6 +111,7 @@ if __name__ == "__main__":
         for predict_prob in predict_probs:
             if not is_multi:
                 predict_label_ids = [predict_prob.argmax()]
+                predict_label_idx = np.argsort(-predict_prob)
             else:
                 predict_label_ids = []
                 predict_label_idx = np.argsort(-predict_prob)
