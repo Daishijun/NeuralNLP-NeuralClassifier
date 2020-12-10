@@ -51,7 +51,7 @@
   "train": {
     "batch_size": 64,
     "start_epoch": 1,
-    "num_epochs": 40,
+    "num_epochs": 20,
     "num_epochs_static_embedding": 100,
     "decay_steps": 1000,
     "decay_rate": 1.0,
@@ -84,8 +84,7 @@
     "kernel_sizes": [
       2,
       3,
-      4,
-      5
+      4
     ],
     "num_kernels": 100,
     "top_k_max_pooling": 1
