@@ -108,7 +108,8 @@ if __name__ == "__main__":
     # with codecs.open("predict_label1122_2k_level3.txt", "w", predictor.dataset.CHARSET) as of:
     # with codecs.open("predict_label1201.txt", "w", predictor.dataset.CHARSET) as of:
     # with codecs.open("predict_label1201_Pets.txt", "w", predictor.dataset.CHARSET) as of:
-    with codecs.open("predict_label1201_Pets_v2.txt", "w", predictor.dataset.CHARSET) as of:
+    # with codecs.open("predict_label1201_Pets_v2.txt", "w", predictor.dataset.CHARSET) as of:
+    with codecs.open("predict_label1201_Pets_v3.txt", "w", predictor.dataset.CHARSET) as of:
         for predict_prob in predict_probs:
             if not is_multi:
                 predict_label_ids = [predict_prob.argmax()]
